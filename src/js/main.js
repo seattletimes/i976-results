@@ -14,6 +14,8 @@ ich.addTemplate("popup", templateFile);
 
 var mapElement = document.querySelector("leaflet-map");
 
+var st = require("./sound-transit.geo.json");
+
 var data = require("./king.geo.json");
 // var dataPierce = require("./pierce.geo.json");
 // var dataSnohom = require("./snohom.geo.json");
@@ -23,7 +25,7 @@ var data = require("./king.geo.json");
 var color = "Pct_yes";
 
 data.features.forEach(function(f) {
-	["pct_yes"].forEach(function(prop) {
+	["Pct_yes"].forEach(function(prop) {
 		f.properties[prop] = (f.properties[prop] * 100).toFixed(1);
 	});
 });
@@ -57,9 +59,9 @@ var getColor = function(d) {
     // console.log(value)
     if (typeof value != "undefined") {
       // condition ? if-true : if-false;
-     return value >= .60 ? '#b35806' :
-     		value >= .50 ? '#f1a340' :
-     		value >= .40 ? '#998ec3' :
+     return value >= 60 ? '#b35806' :
+     		value >= 50 ? '#f1a340' :
+     		value >= 40 ? '#998ec3' :
              '#542788' ;
     } else {
       return "gray"
@@ -81,6 +83,23 @@ var getColor = function(d) {
     style: style,
     onEachFeature: onEachFeature
   }).addTo(map);
+
+  // Set up style for ST polygon
+function stStyle(feature) {
+    return {
+      fillColor: "#FF00FF",
+      fillOpacity: 0,
+      color: '#000000',
+      weight: 3,
+    };
+  }
+            
+  // Create layer and add it to the map
+  var stLayer = L.geoJSON(st, {
+    style:stStyle
+  });
+            
+  stLayer.addTo(map);
 
 }
 

@@ -1,11 +1,11 @@
 {
   "s3": {
     "stage": {
-      "bucket": "",
-      "path": ""
+      "bucket": "projects-staging.seattletimes.com",
+      "path": "cyclonal-fussiness"
     },
     "live": {
-      "bucket": "",
+      "bucket": "projects.seattletimes.com",
       "path": ""
     }
   },
