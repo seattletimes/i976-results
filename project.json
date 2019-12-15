@@ -6,12 +6,13 @@
     },
     "live": {
       "bucket": "projects.seattletimes.com",
-      "path": ""
+      "path": "2019/local/i976-result-map"
     }
   },
   "title": "",
   "description": "",
   "url": "",
   "slug": "",
-  "tags": []
+  "tags": [],
+  "production": "true"
 }
