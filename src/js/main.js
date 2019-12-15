@@ -15,12 +15,15 @@ ich.addTemplate("popup", templateFile);
 var mapElement = document.querySelector("leaflet-map");
 
 var st = require("./sound-transit.geo.json");
+// var rail = require("./rail.geo.json");
 
-var data = require("./king.geo.json");
-// var dataPierce = require("./pierce.geo.json");
-// var dataSnohom = require("./snohom.geo.json");
+var dataKing = require("./king.geo.json");
+var dataPierce = require("./pierce.geo.json");
+var dataSnoho = require("./snoho.geo.json");
 
-// var data = [dataKing, dataPierce, dataSnohom];
+console.log(dataKing);
+console.log(dataKing.features);
+var data = { features: [...dataKing.features, ...dataPierce.features, ...dataSnoho.features] };
 
 var color = "Pct_yes";
 
@@ -100,7 +103,7 @@ function stStyle(feature) {
   });
             
   stLayer.addTo(map);
-
+  stLayer.bringToBack();
 }
 
  map.scrollWheelZoom.disable();
